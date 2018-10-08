@@ -10,10 +10,10 @@ import { WeatherService } from './weather.service';
 export class AppComponent implements OnInit {
   title = 'charts';
   chart = []; // This will hold our charts info
+  chartIds = ['canvas', 'canvas2'];
 
   constructor(private _weather: WeatherService, public render2: Renderer2) {}
   public ngOnInit() {
-
     this._weather.getJSON().subscribe(res => {
       // console.log(res);
 
