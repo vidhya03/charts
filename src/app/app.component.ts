@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Chart } from 'chart.js';
 import { WeatherService } from './weather.service';
 
@@ -11,9 +11,10 @@ export class AppComponent implements OnInit {
   title = 'charts';
   chart = []; // This will hold our charts info
 
-  constructor(private _weather: WeatherService) {}
+  constructor(private _weather: WeatherService, public render2: Renderer2) {}
   public ngOnInit() {
-    this._weather.dailyForecast().subscribe(res => {
+
+    this._weather.getJSON().subscribe(res => {
       // console.log(res);
 
       let temp_max = res['list'].map(reslist => reslist.main.temp_max);
